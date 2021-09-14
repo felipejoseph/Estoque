@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="card-body">
+			<div class="jumbotron mb-0">
+				<h1 class="display-4">Cadastrar Produto</h1>
+			</div>
+		</div>
+		<nav
+			class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link active" href="/home">Home<span
+					class="sr-only">(Página atual)</span></a> <a
+					class="nav-item nav-link active" href="/produto/formulario">Cadastrar
+					Produto</a>
+			</div>
+			<form class="form-inline my-2 my-lg-0">
+				<input type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+				<button class="btn btn-dark my-1 my-sm-0" type="submit">Pesquisar</button>
+			</form>
+
+		</nav>
+		<div class="card">
+			<form th:object="${requisicaoNovoProduto}" class="card-body"
+				action="/produto/novo" method="POST">
+				<div class="mb-3">
+					<label for="nomeProduto" class="form-label">Produto</label> <input
+						th:field="*{nomeProduto}" th:errorclass="is-invalid"
+						class="form-control" placeholder="nome do produto" /> <small>insira
+						o nome do produto</small>
+					<div class="invalid-feedback" th:errors="*{nomeProduto}"></div>
+				</div>
+				<div class="mb-3">
+					<label for="codigo" class="form-label">Codigo do produto</label> <input
+						th:field="*{codigo}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Codigo" /> <small>Codigo
+						do produto(se tiver mais de um separar por virgulas)</small>
+					<div class="invalid-feedback" th:errors="*{codigo}"></div>
+				</div>
+				<div class="mb-3">
+					<label for="descricao" class="form-label">Descrição do
+						produto</label> <input th:field="*{descricao}" th:errorclass="is-invalid"
+						class="form-control" placeholder="descricao" /> <small>Insira
+						uma descrição</small>
+					<div class="invalid-feedback" th:errors="*{descricao}"></div>
+				</div>
+				<div class="mb-3">
+					<label for="urlImagem" class="form-label">Url da imagem</label> <input
+						th:field="*{urlImagem}" th:errorclass="is-invalid"
+						class="form-control" placeholder="url da imagem" /> <small>insira
+						a URL da Imagem</small>
+					<div class="invalid-feedback" th:errors="*{urlImagem}"></div>
+				</div>
+				<button class="btn btn-dark" type="submit" >Cadastrar</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

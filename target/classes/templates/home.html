@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="card-body">
+			<div class="jumbotron mb-0">
+				<h1 class="display-4">Estoque</h1>
+			</div>
+
+			<nav
+				class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link active" href="/home">Home<span
+						class="sr-only">(Página atual)</span></a> <a
+						class="nav-item nav-link active" href="/produto/formulario">Cadastrar
+						Produto</a>
+				</div>
+
+				<form class="form-inline my-2 my-lg-0" th:action="@{/pesquisaproduto}" method="post" >
+    				<input type="text" name="nome" id="nome"  th:value="${nome}" placeholder="Pesquisar" aria-label="Pesquisar"/>
+    				<button class="btn btn-dark my-2 my-sm-0" type="submit">Pesquisar</button>
+				</form>
+
+			</nav>
+
+			</br>
+			<div class="card-header">Estoque</div>
+			<div class="card" th:each="listProducts: ${listProducts}">
+
+
+				<div class="card-body">
+					<div class="row">
+						<div class="col-8">
+							<div class="card-header" th:text="${listProducts.nomeProduto}">Nome
+								do Produto</div>
+
+
+							<div>Codigo do Produto:</div>
+							<div input class="form-control" th:text="${listProducts.codigo}"
+								readonly></div>
+
+							<div>
+								<div>Descrição</div>
+								<textarea input class="form-control "
+									th:text="${listProducts.descricao}" readonly>Descrição</textarea>
+							</div>
+
+						</div>
+						<!-- fim div col-6 acima da imagem -->
+
+						<div class="col-4">
+							<div class="card-body">
+								<img th:src="${listProducts.urlImagem}" src="" class="img-thumbnail">
+							</div>
+
+						</div>
+						<!-- fim div col-6 da imagem -->
+
+					</div>
+				</div>
+				<!-- fim div card-body -->
+			</div>
+			<!-- fim div card -->
+		</div>
+		<!-- fim div card-body -->
+	</div>
+	<!-- fim div container -->
+</body>
+</html>
