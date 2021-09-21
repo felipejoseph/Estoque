@@ -1,0 +1,8 @@
+br\com\alura\mvc\estoque\controller\HelloController.class
+br\com\alura\mvc\estoque\dto\RequisicaoNovoProduto.class
+br\com\alura\mvc\estoque\controller\HomeController.class
+br\com\alura\mvc\estoque\controller\produtoController.class
+br\com\alura\mvc\estoque\model\Produto.class
+br\com\alura\mvc\estoque\repository\produtoRepository.class
+br\com\alura\mvc\estoque\controller\cadastroRepository.class
+br\com\alura\mvc\estoque\EstoqueApplication.class
