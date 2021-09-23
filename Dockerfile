@@ -1,6 +1,17 @@
-FROM openjdk:11-jre
-RUN mkdir app
-ARG JAR_FILE
-ADD /target/${JAR_FILE} /app/estoque-0.0.1-SNAPSHOT
-WORKDIR /app
-ENTRYPOINT java -jar estoque-0.0.1-SNAPSHOT
+FROM openjdk:11
+
+ARG PROFILE
+ARG ADDITIONAL_OPTS
+
+ENV PROFILE=${PROFILE}
+ENV ADDITIONAL_OPTS=${ADDITIONAL_OPTS}
+
+WORKDIR /opt/spring_boot
+
+COPY /target/estoque*.jar estoque.jar
+
+SHELL ["/bin/sh", "-c" ]
+
+EXPOSE 8080
+
+CMD java ${ADDITIONAL_OPTS} -jar estoque.jar --spring.profiles.active=${PROFILE}
